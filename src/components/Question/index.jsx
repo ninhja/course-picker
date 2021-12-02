@@ -1,20 +1,26 @@
 import React from 'react'
 import {QuestionBox, Question, Description, OptionsBox, Option} from './styles'
 
-const QuestionComponent = ({question, handleOptionClick}) => {
+const QuestionComponent = ({
+  currentQuestionId,
+  questionsData,
+  answersData,
+  handleOptionClick
+}) => {
+  const currentQuestion = questionsData[currentQuestionId]
   return (
     <>
       <QuestionBox>
-        <Question>{question.questionText}</Question>
-        <Description>{question.descriptionText}</Description>
+        <Question>{currentQuestion.questionText}</Question>
+        <Description>{currentQuestion.descriptionText}</Description>
       </QuestionBox>
 
       <OptionsBox>
-        {question.answerOptions.map((option, index) => {
+        {answersData[currentQuestionId].map((option, index) => {
           return (
             <Option
               key={option.optionId}
-              onClick={() => handleOptionClick(option.optionId)}
+              onClick={() => handleOptionClick(currentQuestionId, option.id)}
               $selected={option.selected}
             >
               {option.answerText}

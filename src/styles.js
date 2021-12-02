@@ -2,7 +2,7 @@ import styled, {createGlobalStyle} from 'styled-components'
 
 export const COLORS = {
   text: 'black',
-  background: 'lightblue',
+  background: 'thistle',
   border: 'black'
 }
 
